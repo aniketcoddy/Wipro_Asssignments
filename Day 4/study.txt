@@ -1,0 +1,36 @@
+user stories (as user I can chat, as user I can upload a stud)
+                    |        payment, location share,....... 
+                    |         chat user stories, call user story,staus user stories,etc
+                    |
+                 product backlog  (describe whole product user stories, and their 
+                    |              priority, chat has high priority than status)
+                    |
+                 sprint planning (product owner,scrum master,development team 
+                    |             discuss the spring planning, that what we developed 
+                    |             in the particular sprint, what is the outcome of
+                    |             sprint)
+                    |
+                  sprint backlog    (It describe the user story step description 
+                    |               in than particulr sprint)
+                    |
+                  sprint ( 1 to 4 weeks)  
+                    |                  plan-design-code-test-deploy.
+                    |
+                  daily stand up(scrum meeting) 
+                    |                  It is quick call among the team, to give 
+                    |                  the product status update.
+                    |                  
+                    |                 generally 20 to 25 minutes call.
+                    |                  1.what we have done yestarday.
+                    |                  2.what we will do it today 
+                    |                  3.Is any thing is blocking
+                    |
+                   product is developed
+                    |               Once is product is developed,It will go
+                    |               for client review.
+                    |
+                  review product and retrospective meeting.
+                    |            review the product by client, 
+                    |            and give the feedback about the feature,
+                    |            any improvement is there that need to improved.
+                    |
