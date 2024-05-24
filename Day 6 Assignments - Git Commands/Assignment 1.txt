@@ -1,0 +1,14 @@
+Assignment 1: Initialize a new Git repository in a directory of your choice. Add a simple text file to the repository and make the first commit.
+
+# Initialize a new Git repository
+git init
+
+# Create a new text file
+echo "This is a simple text file." > example.txt
+
+# Add the text file to the staging area
+git add example.txt
+
+# Commit the file to the repository
+git commit -m "Initial commit with a simple text file" 
+ 
