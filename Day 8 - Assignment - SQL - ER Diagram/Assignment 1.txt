@@ -1,0 +1,87 @@
+Assignment 1: Analyze a given business scenario and create an ER diagram that includes entities, relationships, attributes, and cardinality. Ensure that the diagram reflects proper normalization up to the third normal form.
+
+I understand that a text representation isn't as clear as a visual diagram. Let's provide a clear, visual ER diagram representation for the described business scenario using standard ER diagram notation. 
+
+### ER Diagram for Online Bookstore
+
+We'll use the following conventions:
+- Rectangles for entities
+- Diamonds for relationships
+- Ovals for attributes
+- Lines connecting entities and attributes with relationships indicating cardinality
+
+Here's the visual ER diagram:
+
+  +---------------+       +------------------+      +------------------+
+  |    Author     |       |      Book        |      |    Customer      |
+  +---------------+       +------------------+      +------------------+
+  | AuthorID (PK) |       | BookID (PK)      |      | CustomerID (PK)  |
+  | Name          |       | Title            |      | Name             |
+  | Bio           |       | ISBN             |      | Email            |
+  +---------------+       | PublicationDate  |      | Address          |
+                          | Price            |      +------------------+
+                          +------------------+
+                                   |                     |
+                                   |                     |
+                                   |                     |
+                      +-------------+                   |
+                      |             |                   |
+                      |             |                   |
+                 +--------+       +-------------+       +--------------+
+                 | Writes |       | OrderItem   |       |     Order    |
+                 +--------+       +-------------+       +--------------+
+                      |             | OrderID (PK,FK)   | OrderID (PK) |
+                      | BookID (FK) | BookID (PK,FK)    | OrderDate    |
+                      | AuthorID(FK)| Quantity          | CustomerID(FK)|
+                      +-------------+                   | ShippingStatusID(FK)|
+                                                       +--------------+
+                                                              |
+                                                              |
+                                                    +--------------------+
+                                                    |   ShippingStatus   |
+                                                    +--------------------+
+                                                    | ShippingStatusID (PK)|
+                                                    | StatusDescription   |
+                                                    +--------------------+
+```
+
+### Description
+
+1. **Entities and Attributes:**
+   - **Book**:
+     - Attributes: `BookID` (PK), `Title`, `ISBN`, `PublicationDate`, `Price`
+   - **Author**:
+     - Attributes: `AuthorID` (PK), `Name`, `Bio`
+   - **Customer**:
+     - Attributes: `CustomerID` (PK), `Name`, `Email`, `Address`
+   - **Order**:
+     - Attributes: `OrderID` (PK), `OrderDate`, `CustomerID` (FK), `ShippingStatusID` (FK)
+   - **OrderItem**:
+     - Attributes: `OrderID` (PK, FK), `BookID` (PK, FK), `Quantity`
+   - **ShippingStatus**:
+     - Attributes: `ShippingStatusID` (PK), `StatusDescription`
+
+2. **Relationships:**
+   - **Writes**: Many-to-Many relationship between `Book` and `Author`
+     - `BookID` (FK in associative entity)
+     - `AuthorID` (FK in associative entity)
+   - **Customer-Order**: One-to-Many relationship
+     - `CustomerID` (FK in `Order`)
+   - **Order-OrderItem**: One-to-Many relationship
+     - `OrderID` (FK in `OrderItem`)
+   - **OrderItem-Book**: Many-to-One relationship
+     - `BookID` (FK in `OrderItem`)
+   - **Order-ShippingStatus**: One-to-One relationship
+     - `ShippingStatusID` (FK in `Order`)
+
+### Explanation
+- The `BookAuthor` entity resolves the many-to-many relationship between `Book` and `Author`.
+- The `OrderItem` entity resolves the many-to-many relationship between `Order` and `Book`.
+- Each `Order` is linked to one `Customer` and one `ShippingStatus`.
+
+### Normalization
+- **First Normal Form (1NF)**: All attributes are atomic.
+- **Second Normal Form (2NF)**: All non-key attributes are fully functional dependent on the primary key.
+- **Third Normal Form (3NF)**: There are no transitive dependencies.
+
+This visual representation accurately depicts the entities, their attributes, and the relationships in a way that supports proper normalization up to the third normal form.

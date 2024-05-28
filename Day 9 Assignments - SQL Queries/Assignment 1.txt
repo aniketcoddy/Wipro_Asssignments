@@ -1,0 +1,35 @@
+1. display dept wise total employee in ascending order.
+
+SELECT 
+    department_id, 
+    COUNT(employee_id) AS total_employees
+FROM 
+    employees
+GROUP BY 
+    department_id
+ORDER BY 
+    total_employees ASC;
+
+
+2. display dept wise sum(salary).
+
+SELECT 
+    department_id, 
+    SUM(salary) AS total_salary
+FROM 
+    employees
+GROUP BY 
+    department_id;
+
+
+3. display dept wise sum(salary) and sum(salary) should be greater than 1 lakh
+
+SELECT 
+    department_id, 
+    SUM(salary) AS total_salary
+FROM 
+    employees
+GROUP BY 
+    department_id
+HAVING 
+    SUM(salary) > 100000;
