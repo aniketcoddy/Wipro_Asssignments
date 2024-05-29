@@ -1,0 +1,109 @@
+Write SQL statements to CREATE a new database and tables that reflect the library schema you designed earlier. Use ALTER statements to modify the table structures and DROP statements to remove a redundant table.
+Sure, here are the SQL statements to create a new database and tables, modify the table structures using ALTER statements, and drop a redundant table. 
+
+### Step 1: Create a new database
+
+```sql
+CREATE DATABASE LibraryDB;
+```
+
+### Step 2: Use the new database
+
+```sql
+USE LibraryDB;
+```
+
+### Step 3: Create the tables
+
+Let's assume the library schema consists of the following tables: `Books`, `Authors`, `Members`, `Loans`, and `Categories`.
+
+#### Books Table
+
+```sql
+CREATE TABLE Books (
+    BookID INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    AuthorID INT,
+    CategoryID INT,
+    ISBN VARCHAR(13) UNIQUE,
+    PublishedYear INT,
+    CopiesAvailable INT DEFAULT 0,
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID),
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+```
+
+#### Authors Table
+
+```sql
+CREATE TABLE Authors (
+    AuthorID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(100),
+    LastName VARCHAR(100)
+);
+```
+
+#### Members Table
+
+```sql
+CREATE TABLE Members (
+    MemberID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(100),
+    LastName VARCHAR(100),
+    Address VARCHAR(255),
+    PhoneNumber VARCHAR(15),
+    Email VARCHAR(100)
+);
+```
+
+#### Loans Table
+
+```sql
+CREATE TABLE Loans (
+    LoanID INT AUTO_INCREMENT PRIMARY KEY,
+    BookID INT,
+    MemberID INT,
+    LoanDate DATE,
+    DueDate DATE,
+    ReturnDate DATE,
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (MemberID) REFERENCES Members(MemberID)
+);
+```
+
+#### Categories Table
+
+```sql
+CREATE TABLE Categories (
+    CategoryID INT AUTO_INCREMENT PRIMARY KEY,
+    CategoryName VARCHAR(100)
+);
+```
+
+### Step 4: Modify the table structures using ALTER statements
+
+Assume we need to add a column `MiddleName` to the `Authors` table and add a new column `MembershipDate` to the `Members` table.
+
+#### Adding MiddleName to Authors
+
+```sql
+ALTER TABLE Authors
+ADD COLUMN MiddleName VARCHAR(100);
+```
+
+#### Adding MembershipDate to Members
+
+```sql
+ALTER TABLE Members
+ADD COLUMN MembershipDate DATE;
+```
+
+### Step 5: Drop a redundant table
+
+Assume we have a redundant table called `OldLoans` which is no longer needed.
+
+```sql
+DROP TABLE OldLoans;
+```
+
+These SQL statements should help set up a basic library database schema, modify the table structures, and remove a redundant table.
